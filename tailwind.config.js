@@ -8,6 +8,7 @@ module.exports = {
     './src/**/*.{js,jsx}',
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+    'node_modules/flowbite-react/lib/esm/**/*.js',
   ],
   prefix: "",
   theme: {
@@ -75,5 +76,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"),require('daisyui'),],
+  plugins: [require("tailwindcss-animate"),require('daisyui'),require('flowbite/plugin')],
 }

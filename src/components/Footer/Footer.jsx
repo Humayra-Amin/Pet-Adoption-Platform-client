@@ -53,14 +53,14 @@ const Footer = () => {
                     </div>
                 </div>
                 <hr className="my-6 border-green-800 sm:mx-auto dark:border-gray-700 lg:my-8" />
-                
+
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <span className="text-[18px] text-black sm:text-center dark:text-gray-400">© 2023 <a className="hover:underline">PawPets™</a>. All Rights Reserved.
                     </span>
-                    
+
                     <div className="flex mt-4 sm:justify-center sm:mt-0">
                         <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
-                        <FaFacebook className='text-green-700 text-2xl'></FaFacebook>
+                            <FaFacebook className='text-green-700 text-2xl'></FaFacebook>
                             <span className="sr-only">Facebook page</span>
                         </a>
                         <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">

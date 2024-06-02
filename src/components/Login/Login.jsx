@@ -57,7 +57,7 @@ const Login = () => {
 
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
 
-                            <h1 className="text-xl lg:text-5xl playfair text-green-700">Login</h1>
+                            <h1 className="text-5xl playfair text-green-700">Login</h1>
 
                             <div className="form-control">
 
@@ -99,12 +99,12 @@ const Login = () => {
 
 
                             <div className="form-control mt-6">
-                                <button className="btn bg-green-400 border-green-800 text-black text-xl hover:bg-green-800 hover:text-black hover:border-green-700">Login</button>
+                                <button className="btn bg-green-400 border-green-800 text-black text-xl hover:bg-green-800 hover:text-white hover:border-green-700">Login</button>
                             </div>
 
 
-                            <label className="label text-[16px] font-medium text-gray-400">
-                                Not registered? <Link to="/register" className="label-text-alt link link-hover text-[16px] font-medium text-blue-600 underline font-sedan">Create Account</Link>
+                            <label className="label text-[16px] font-medium text-gray-400 robotoSlab">
+                                Not registered? <Link to="/register" className="label-text-alt link link-hover text-[16px] font-medium text-blue-600 underline robotoSlab">Create Account</Link>
                             </label>
 
 

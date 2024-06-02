@@ -5,11 +5,11 @@ const Navbar = () => {
     const links = <>
         <li><NavLink to="/" className={({ isActive }) =>
             isActive ? 'text-black border-2 rounded-lg p-2 border-green-500 bg-white hover:bg-green-200' : 'hover:bg-gray-200 rounded-lg p-2'}>Home</NavLink></li>
-        <li><NavLink to="/assignments" className={({ isActive }) =>
+        <li><NavLink to="/petList" className={({ isActive }) =>
             isActive ? 'text-black border-2 rounded-lg p-2 border-green-500 bg-white hover:bg-green-200' : 'hover:bg-gray-200 rounded-lg p-2'}>Pet Listing</NavLink></li>
-        <li><NavLink to="/CAssignments" className={({ isActive }) =>
+        <li><NavLink to="/donation" className={({ isActive }) =>
             isActive ? 'text-black border-2 rounded-lg p-2 border-green-500 bg-white hover:bg-green-200' : 'hover:bg-gray-200 rounded-lg p-2'}>Donation Campaigns</NavLink></li>
-        <li><NavLink to="/comments" className={({ isActive }) =>
+        <li><NavLink to="/logReg" className={({ isActive }) =>
             isActive ? 'text-black border-2 rounded-lg p-2 border-green-500 bg-white hover:bg-green-200' : 'hover:bg-gray-200 rounded-lg p-2'}>Login/Register</NavLink></li>
     </>
     return (

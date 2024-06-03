@@ -4,7 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import { FaEnvelope, FaEye, FaEyeSlash, FaLink, FaLock, FaUser } from "react-icons/fa";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-// import SocialLogin from "../SocialLogin/SocialLogin";
+import SocialLogin from "../SocialLogin/SocialLogin";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -165,7 +165,7 @@ const Register = () => {
                                 Have an account? <Link to="/logReg" className="label-text-alt link link-hover text-xl font-medium text-blue-600 underline robotoSlab">Login</Link>
                             </label>
 
-                            {/* <SocialLogin></SocialLogin> */}
+                            <SocialLogin></SocialLogin>
 
                         </form>
 

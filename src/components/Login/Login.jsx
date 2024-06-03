@@ -6,6 +6,7 @@ import { FaEnvelope, FaEye, FaEyeSlash, FaLock } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from "react";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 
 const Login = () => {
@@ -107,7 +108,7 @@ const Login = () => {
                                 Not registered? <Link to="/register" className="label-text-alt link link-hover text-[16px] font-medium text-blue-600 underline robotoSlab">Create Account</Link>
                             </label>
 
-
+                            <SocialLogin></SocialLogin>
 
                         </form>
 

@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import icon from '../../assets/images/icon.png'
 
 const Navbar = () => {
@@ -26,7 +26,7 @@ const Navbar = () => {
                 </div>
                 <a className="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src={icon} className="h-8" />
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap text-green-700">PawPets</span>
+                    <Link to='/'><span className="self-center text-2xl font-semibold whitespace-nowrap text-green-700">PawPets</span></Link>
                 </a>
 
                 <div className="dropdown dropdown-end flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">

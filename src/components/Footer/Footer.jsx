@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import icon from '../../assets/images/icon.png'
 import { FaFacebook, FaGoogle, FaInstagram, FaTwitter } from "react-icons/fa";
 
@@ -8,10 +9,12 @@ const Footer = () => {
             <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">
-                        <a href="https://flowbite.com/" className="flex items-center">
-                            <img src={icon} className="h-14 me-3" />
-                            <span className="self-center lg:text-3xl font-semibold text-green-900 whitespace-nowrap dark:text-white">PawPets</span>
-                        </a>
+                        <Link to='/'>
+                            <a className="flex items-center">
+                                <img src={icon} className="h-14 me-3" />
+                                <span className="self-center lg:text-3xl font-semibold text-green-900 whitespace-nowrap dark:text-white">PawPets</span>
+                            </a>
+                        </Link>
                         <p className='mt-2'>123, XYZ Hill, Chattogram, Bangladesh</p>
                         <p className='mt-2'>+8801876943665</p>
                         <p className='mt-2'>pawPets@gmail.com</p>

@@ -1,6 +1,6 @@
-import { createContext, useState } from "react";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, GithubAuthProvider, signOut, updateProfile } from "firebase/auth";
-import auth from "../firebase/firebase.config";
+import { createContext, useEffect, useState } from "react";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, GithubAuthProvider, signOut, updateProfile } from "firebase/auth";
+import auth from "@/firebase/firebase.config";
 
 
 export const AuthContext = createContext(null)
@@ -10,11 +10,11 @@ const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-
+    const [loading, setLoading] = useState(true);
 
     // create user
     const createUser = (email, password) => {
-        
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
@@ -28,19 +28,19 @@ const AuthProvider = ({ children }) => {
 
     // sign in user
     const signInUser = (email, password) => {
-        
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
     // google login
     const googleLogin = () => {
-        
+        setLoading(true);
         return signInWithPopup(auth, googleProvider);
     }
 
     // github login
     const githubLogin = () => {
-        
+        setLoading(true);
         return signInWithPopup(auth, githubProvider);
     }
 
@@ -50,6 +50,23 @@ const AuthProvider = ({ children }) => {
         signOut(auth);
     }
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUser(user);
+            }
+            clearTimeout(timer);
+            setLoading(false);
+        })
+        return () => {
+            clearTimeout(timer);
+            unsubscribe();
+        };
+    }, [])
 
 
     const allValues = {
@@ -59,6 +76,7 @@ const AuthProvider = ({ children }) => {
         googleLogin,
         githubLogin,
         logout,
+        loading,
         updateUserProfile
     }
 

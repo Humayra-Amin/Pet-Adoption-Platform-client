@@ -13,6 +13,7 @@ import ErrorPage from './components/ErrorPage/ErrorPage';
 import Login from './components/Login/Login';
 import AuthProvider from './AuthProvider/AuthProvider';
 import Register from './components/Register/Register';
+import UserProfile from './components/UserProfile/UserProfile';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>,
+      },
+      {
+        path: '/userprofile',
+        element: <UserProfile></UserProfile>,
       },
     ]
   },

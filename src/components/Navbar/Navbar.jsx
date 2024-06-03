@@ -16,6 +16,8 @@ const Navbar = () => {
             isActive ? 'text-black border-2 rounded-lg p-2 border-green-500 bg-white hover:bg-green-200' : 'hover:bg-gray-200 rounded-lg p-2'}>Donation Campaigns</NavLink></li>
         {!user && <li><NavLink to="/register" className={({ isActive }) =>
             isActive ? 'text-black border-2 rounded-lg p-2 border-green-500 bg-white hover:bg-green-200' : 'hover:bg-gray-200 rounded-lg p-2'}>Register</NavLink></li>}
+        {user && <li><NavLink to="/userprofile" className={({ isActive }) =>
+            isActive ? 'text-black border-2 rounded-lg p-2 border-green-500 bg-white hover:bg-green-200' : 'hover:bg-gray-200 rounded-lg p-2'}>User Profile</NavLink></li>}
     </>;
 
     return (

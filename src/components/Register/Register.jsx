@@ -1,12 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import useAuth from "../../hooks/useAuth";
 import { FaEnvelope, FaEye, FaEyeSlash, FaLink, FaLock, FaUser } from "react-icons/fa";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useAuth from "@/hooks/useAuth";
 
 const Register = () => {
 

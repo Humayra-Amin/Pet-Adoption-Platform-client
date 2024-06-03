@@ -12,7 +12,7 @@ const Footer = () => {
                         <Link to='/'>
                             <a className="flex items-center">
                                 <img src={icon} className="h-14 me-3" />
-                                <span className="self-center lg:text-3xl font-semibold text-green-900 whitespace-nowrap dark:text-white">PawPets</span>
+                                <span className="self-center text-2xl lg:text-3xl font-semibold text-green-900 whitespace-nowrap dark:text-white">PawPets</span>
                             </a>
                         </Link>
                         <p className='mt-2'>123, XYZ Hill, Chattogram, Bangladesh</p>

@@ -14,6 +14,8 @@ import Login from './components/Login/Login';
 import AuthProvider from './AuthProvider/AuthProvider';
 import Register from './components/Register/Register';
 import UserProfile from './components/UserProfile/UserProfile';
+import PetList from './components/PetList/PetList';
+import PetDetails from './components/PetDetails/PetDetails';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +38,14 @@ const router = createBrowserRouter([
       {
         path: '/userprofile',
         element: <UserProfile></UserProfile>,
+      },
+      {
+        path: '/petList',
+        element: <PetList></PetList>,
+      },
+      {
+        path: '/petDetails',
+        element: <PetDetails></PetDetails>,
       },
     ]
   },

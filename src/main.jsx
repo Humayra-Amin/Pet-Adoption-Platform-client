@@ -16,6 +16,7 @@ import Register from './components/Register/Register';
 import UserProfile from './components/UserProfile/UserProfile';
 import PetList from './components/PetList/PetList';
 import PetDetails from './components/PetDetails/PetDetails';
+import DonationCamp from './components/DonationCamp/DonationCamp';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: '/petDetails',
         element: <PetDetails></PetDetails>,
+      },
+      {
+        path: '/donation',
+        element: <DonationCamp></DonationCamp>,
       },
     ]
   },

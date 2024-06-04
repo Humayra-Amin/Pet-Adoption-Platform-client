@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import dog1 from '../../assets/images/dog1.jfif'
+import dog1 from '../../assets/images/dog1.jpg'
 
 const PetDetails = () => {
     return (
@@ -19,12 +19,12 @@ const PetDetails = () => {
 
             <div className="container mx-auto my-10 flex justify-center">
 
-                <div className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100">
+                <div className="flex flex-col items-center bg-white border-2 border-green-700 rounded-lg shadow-lg lg:w-[600px] md:flex-row md:max-w-xl hover:bg-black-100">
                     <img className="object-cover w-full rounded-t-lg h-80 md:h-[300px] lg:h-[300px] md:w-[300px] lg:w-[300px] md:rounded-none md:rounded-s-lg" src={dog1} />
                     <div className="flex flex-col justify-between p-4 leading-normal">
-                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">Pet Name</h5>
-                        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Pet Id</p>
-                        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Pet Details</p>
+                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-black-900">Pet Name</h5>
+                        <p className="mb-3 font-normal text-black-700">Pet Id</p>
+                        <p className="mb-3 font-normal text-black-700">Pet Details</p>
                         <div>
                             <button className=" btn inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 robotoSlab">Adopt</button>
                         </div>

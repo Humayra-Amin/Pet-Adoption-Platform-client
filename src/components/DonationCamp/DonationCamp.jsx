@@ -45,7 +45,7 @@ const DonationCamp = () => {
                             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Pet Name</h5>
                             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Max Donation Amount</p>
                             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Donated Amount</p>
-                            <Link to='/petDetails'><button className=" btn inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 robotoSlab">View Details</button></Link>
+                            <Link to='/donationDetails'><button className="btn inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 robotoSlab">Adopt</button></Link>
                         </div>
                     </div>
 
@@ -58,7 +58,7 @@ const DonationCamp = () => {
                             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Pet Name</h5>
                             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Max Donation Amount</p>
                             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Donated Amount</p>
-                            <Link to='/petDetails'><button className=" btn inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 robotoSlab">View Details</button></Link>
+                            <Link to='/donationDetails'><button className="btn inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 robotoSlab">Adopt</button></Link>
                         </div>
                     </div>
 
@@ -71,7 +71,7 @@ const DonationCamp = () => {
                             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Pet Name</h5>
                             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Max Donation Amount</p>
                             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Donated Amount</p>
-                            <Link to='/petDetails'><button className=" btn inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 robotoSlab">View Details</button></Link>
+                            <Link to='/donationDetails'><button className="btn inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 robotoSlab">Adopt</button></Link>
                         </div>
                     </div>
 

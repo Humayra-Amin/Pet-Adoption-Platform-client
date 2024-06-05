@@ -1,0 +1,39 @@
+[
+    {
+      "id": "001",
+      "name": "John Doe",
+      "details": "Great service and very helpful staff. My pet is very happy and healthy after visiting. The facility is clean and the team is very knowledgeable.",
+      "ratings": 5
+    },
+    {
+      "id": "002",
+      "name": "Jane Smith",
+      "details": "Had a wonderful experience. The staff went above and beyond to ensure my pet was comfortable. I highly recommend their services to all pet owners.",
+      "ratings": 4
+    },
+    {
+      "id": "003",
+      "name": "Michael Johnson",
+      "details": "Very professional and caring. The veterinarians took the time to explain everything in detail and answered all my questions. Will come back again.",
+      "ratings": 5
+    },
+    {
+      "id": "004",
+      "name": "Emily Davis",
+      "details": "Good service but a bit expensive. However, the quality of care my pet received was excellent, which made it worth the cost. The staff is friendly and attentive.",
+      "ratings": 3
+    },
+    {
+      "id": "005",
+      "name": "Chris Brown",
+      "details": "Friendly staff and clean facilities. My pet was treated with utmost care and I felt reassured throughout the process. Definitely recommend this place.",
+      "ratings": 4
+    },
+    {
+      "id": "006",
+      "name": "Sarah Wilson",
+      "details": "My pet was well taken care of. The team made sure to keep me updated on my pet's progress and the recovery process was smooth. Thank you for the great service!",
+      "ratings": 5
+    }
+  ]
+  

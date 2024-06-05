@@ -104,8 +104,7 @@ const Login = () => {
                             </div>
 
 
-                            <label className="label text-[16px] font-medium text-gray-400 robotoSlab">
-                                Not registered? <Link to="/register" className="label-text-alt link link-hover text-[16px] font-medium text-blue-600 underline robotoSlab">Create Account</Link>
+                            <label className="label text-[16px] font-medium text-gray-400 robotoSlab">Not registered? <Link to="/register" className="label-text-alt link link-hover text-[16px] font-medium text-blue-600 underline robotoSlab">Create Account</Link>
                             </label>
 
                             <SocialLogin></SocialLogin>

@@ -1,0 +1,45 @@
+[
+    {
+      "pet_id": "001",
+      "pet_image": "https://i.ibb.co/T8q0N4v/kitten.jpg",
+      "pet_name": "Charlie",
+      "pet_age": "2 years",
+      "pet_location": "New York, NY"
+    },
+    {
+      "pet_id": "002",
+      "pet_image": "https://i.ibb.co/y4y2Y7R/parrot1.webp",
+      "pet_name": "Whiskers",
+      "pet_age": "1 year",
+      "pet_location": "Los Angeles, CA"
+    },
+    {
+      "pet_id": "003",
+      "pet_image": "https://i.ibb.co/dmXLgBJ/rabbit5.jpg",
+      "pet_name": "Rocky",
+      "pet_age": "3 years",
+      "pet_location": "Chicago, IL"
+    },
+    {
+      "pet_id": "004",
+      "pet_image": "https://i.ibb.co/F8nkTvW/dog1.jpg",
+      "pet_name": "Daisy",
+      "pet_age": "4 months",
+      "pet_location": "Houston, TX"
+    },
+    {
+      "pet_id": "005",
+      "pet_image": "https://i.ibb.co/YRdzgp3/cat3.jpg",
+      "pet_name": "Oscar",
+      "pet_age": "5 years",
+      "pet_location": "Phoenix, AZ"
+    },
+    {
+      "pet_id": "006",
+      "pet_image": "https://i.ibb.co/BV3CM1B/bird3.jpg",
+      "pet_name": "Coco",
+      "pet_age": "6 months",
+      "pet_location": "Philadelphia, PA"
+    }
+  ]
+  

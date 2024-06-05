@@ -161,8 +161,7 @@ const Register = () => {
                                 <button className="btn bg-green-400 border-green-800 text-black text-xl hover:bg-green-800 hover:text-white hover:border-green-700">Register</button>
                             </div>
 
-                            <label className="label text-[16px] font-medium text-gray-400 robotoSlab">
-                                Have an account? <Link to="/logReg" className="label-text-alt link link-hover text-xl font-medium text-blue-600 underline robotoSlab">Login</Link>
+                            <label className="label text-[16px] font-medium text-gray-400 robotoSlab">Have an account? <Link to="/login" className="label-text-alt link link-hover text-[16px] font-medium text-blue-600 underline robotoSlab">SignIn</Link>
                             </label>
 
                             <SocialLogin></SocialLogin>

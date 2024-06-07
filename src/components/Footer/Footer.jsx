@@ -1,11 +1,11 @@
+// Footer.jsx
 import { Link } from 'react-router-dom';
 import icon from '../../assets/images/icon.png'
 import { FaFacebook, FaGoogle, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
     return (
-
-        <footer className="bg-green-100 mt-10 dark:bg-gray-900">
+        <footer className="bg-green-100 dark:bg-gray-900">
             <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">
@@ -58,31 +58,36 @@ const Footer = () => {
                 <hr className="my-6 border-green-800 sm:mx-auto dark:border-gray-700 lg:my-8" />
 
                 <div className="sm:flex sm:items-center sm:justify-between">
+                    
                     <span className="text-[18px] text-black sm:text-center dark:text-gray-400">© 2023 <a className="hover:underline">PawPets™</a>. All Rights Reserved.
                     </span>
 
                     <div className="flex mt-4 sm:justify-center sm:mt-0">
+
                         <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
                             <FaFacebook className='text-green-700 text-2xl'></FaFacebook>
                             <span className="sr-only">Facebook page</span>
                         </a>
+
                         <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
                             <FaGoogle className='text-green-700 text-2xl'></FaGoogle>
                             <span className="sr-only">Discord community</span>
                         </a>
+
                         <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
                             <FaTwitter className='text-green-700 text-2xl'></FaTwitter>
                             <span className="sr-only">Twitter page</span>
                         </a>
+
                         <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
                             <FaInstagram className='text-green-700 text-2xl'></FaInstagram>
                             <span className="sr-only">GitHub account</span>
                         </a>
+
                     </div>
                 </div>
             </div>
         </footer>
-
     );
 };
 

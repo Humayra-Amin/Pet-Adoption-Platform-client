@@ -1,17 +1,34 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Helmet } from "react-helmet-async";
-import dog1 from '../../assets/images/dog1.jpg';
+import { useParams } from 'react-router-dom';
 
 const PetDetails = () => {
+    const { id } = useParams();
+    const [pet, setPet] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [formData, setFormData] = useState({
-        petId: '123', 
-        petName: 'Buddy',
+        petId: '', 
+        petName: '',
         userName: 'John Doe',
         email: 'johndoe@example.com',
         phone: '',
         address: '',
     });
+
+    useEffect(() => {
+        // Fetch the pet details by ID
+        fetch("/petlist.json")
+            .then(res => res.json())
+            .then(data => {
+                setPet(data);
+                setFormData(prevFormData => ({
+                    ...prevFormData,
+                    petId: data._id,
+                    petName: data.pet_name,
+                }));
+            })
+            .catch(error => console.error('Error fetching pet details:', error));
+    }, [id]);
 
     const handleAdoptClick = () => {
         setShowModal(true);
@@ -31,6 +48,10 @@ const PetDetails = () => {
         setShowModal(false);
     };
 
+    if (!pet) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <div>
             <Helmet>
@@ -48,11 +69,11 @@ const PetDetails = () => {
 
             <div className="container mx-auto my-10 flex justify-center">
                 <div className="flex flex-col items-center bg-white border-2 border-green-700 rounded-lg shadow-lg lg:w-[600px] md:flex-row md:max-w-xl hover:bg-black-100">
-                    <img className="object-cover w-full rounded-t-lg h-80 md:h-[300px] lg:h-[300px] md:w-[300px] lg:w-[300px] md:rounded-none md:rounded-s-lg" src={dog1} alt="Pet" />
+                    <img className="object-cover w-full rounded-t-lg h-80 md:h-[300px] lg:h-[300px] md:w-[300px] lg:w-[300px] md:rounded-none md:rounded-s-lg" src={pet.pet_image} alt="Pet" />
                     <div className="flex flex-col justify-between p-4 leading-normal">
-                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-black-900">Buddy</h5>
-                        <p className="mb-3 font-normal text-black-700">Pet Id: 123</p>
-                        <p className="mb-3 font-normal text-black-700">Pet Details: Friendly and playful.</p>
+                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-black-900">{pet.pet_name}</h5>
+                        <p className="mb-3 font-normal text-black-700">Pet Id: {pet._id}</p>
+                        <p className="mb-3 font-normal text-black-700">Pet Details: {pet.pet_details}</p>
                         <div>
                             <button className="btn inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 robotoSlab" onClick={handleAdoptClick}>
                                 Adopt

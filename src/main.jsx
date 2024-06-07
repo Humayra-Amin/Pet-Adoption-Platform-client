@@ -18,6 +18,8 @@ import PetList from './components/PetList/PetList';
 import PetDetails from './components/PetDetails/PetDetails';
 import DonationCamp from './components/DonationCamp/DonationCamp';
 import DonationDetails from './components/DonationDetails/DonationDetails';
+import Dashboard from './components/UserDashboard/Dashboard/Dashboard';
+import AddPet from './components/UserDashboard/AddPet/AddPet';
 
 const router = createBrowserRouter([
   {
@@ -46,7 +48,7 @@ const router = createBrowserRouter([
         element: <PetList></PetList>,
       },
       {
-        path: '/petDetails',
+        path: '/petDetails/:id',
         element: <PetDetails></PetDetails>,
       },
       {
@@ -56,6 +58,14 @@ const router = createBrowserRouter([
       {
         path: '/donationDetails',
         element: <DonationDetails></DonationDetails>,
+      },
+      {
+        path: '/dashboard',
+        element: <Dashboard></Dashboard>,
+      },
+      {
+        path: '/dashboard/add-pet',
+        element: <AddPet></AddPet>,
       },
     ]
   },

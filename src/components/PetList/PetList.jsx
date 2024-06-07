@@ -1,9 +1,19 @@
-import { Link } from 'react-router-dom';
-import dog1 from '../../assets/images/dog1.jpg'
-import rabbit1 from '../../assets/images/rabbit1.webp'
-import cat1 from '../../assets/images/cat3.jpg'
+
 import { Helmet } from 'react-helmet-async';
+import { useEffect, useState } from 'react';
+import PetCard from '../PetCard/PetCard';
+
 const PetList = () => {
+    const [list, setList] = useState([]);
+
+    useEffect(() => {
+        fetch('petlist.json')
+        .then(res => res.json())
+        .then(data => {
+            setList(data);
+        });
+    }, []);
+    
     return (
         <div>
             <Helmet>
@@ -80,46 +90,11 @@ const PetList = () => {
                 </div>
 
                 <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-5 lg:gap-5'>
-                    {/* first card */}
-                    <div className=" bg-white border-2 border-green-700 rounded-lg shadow-lg dark:bg-black-800 dark:border-black-700">
-                        <div>
-                            <img className="rounded-t-lg w-[450px] h-[300px]" src={dog1} />
-                        </div>
-                        <div className="p-5">
-                            <h5 className="mb-2 text-2xl font-bold tracking-tight text-black-900 dark:text-white">Pet Name</h5>
-                            <p className="mb-3 font-normal text-black-700 dark:text-black-400">pet age</p>
-                            <p className="mb-3 font-normal text-black-700 dark:text-black-400">pet location</p>
-                            <Link to='/petDetails'><button className=" btn inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 robotoSlab">View Details</button></Link>
-                        </div>
-                    </div>
 
-                    {/* second card */}
-                    <div className=" bg-white border-2 border-green-700 rounded-lg shadow-lg dark:bg-black-800 dark:border-black-700">
-                        <div>
-                            <img className="rounded-t-lg w-[450px] h-[300px]" src={rabbit1} />
-                        </div>
-                        <div className="p-5">
-                            <h5 className="mb-2 text-2xl font-bold tracking-tight text-black-900 dark:text-white">Pet Name</h5>
-                            <p className="mb-3 font-normal text-black-700 dark:text-black-400">pet age</p>
-                            <p className="mb-3 font-normal text-black-700 dark:text-black-400">pet location</p>
-                            <Link to='/petDetails'><button className=" btn inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 robotoSlab">View Details</button></Link>
-                        </div>
-                    </div>
-
-                    {/* 3rd card */}
-                    <div className=" bg-white border-2 border-green-700 rounded-lg shadow-lg dark:bg-black-800 dark:border-black-700">
-                        <div>
-                            <img className="rounded-t-lg w-[450px] h-[300px]" src={cat1} />
-                        </div>
-                        <div className="p-5">
-                            <h5 className="mb-2 text-2xl font-bold tracking-tight text-black-900 dark:text-white">Pet Name</h5>
-                            <p className="mb-3 font-normal text-black-700 dark:text-black-400">pet age</p>
-                            <p className="mb-3 font-normal text-black-700 dark:text-black-400">pet location</p>
-                            <Link to='/petDetails'><button className=" btn inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 robotoSlab">View Details</button></Link>
-
-                        </div>
-                    </div>
-
+                    {
+                    list.map(pet => (
+                        <PetCard key={pet._id} pet={pet} />
+                    ))}
                 </div>
 
             </div>

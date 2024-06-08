@@ -1,11 +1,12 @@
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "@/hooks/useAxiosPublic";
 
 const SocialLogin = () => {
 
     const { googleLogin, githubLogin } = useAuth();
-
+    const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
     const location = useLocation();
     console.log(location);
@@ -13,13 +14,25 @@ const SocialLogin = () => {
     const from = location?.state || "/";
 
 
-    const handleSocialLogin = socialProvider => {
-        socialProvider()
-            .then((result) => {
-                if (result.user) {
-                    navigate(from);
-                }
-            });
+    const handleSocialLogin = async (socialProvider) => {
+        try {
+            const result = await socialProvider();
+            const userInfo = {
+                email: result.user?.email,
+                name: result.user?.displayName,
+                role: 'user',
+            };
+            const res = await axiosPublic.post('/User', userInfo);
+            console.log(res.data);
+            if (res.data.insertedId || res.data.message === 'User already exists') {
+
+                navigate(from, { replace: true });
+            } else {
+                console.error('User creation failed');
+            }
+        } catch (error) {
+            console.error('Social login error:', error);
+        }
     };
 
     return (

@@ -46,11 +46,13 @@ const router = createBrowserRouter([
       {
         path: '/petList',
         element: <PetList></PetList>,
+        loader: () => fetch('http://localhost:5000/pets')
       },
       {
-        path: '/petDetails/:id',
+        path: '/pets/:id',
         element: <PetDetails></PetDetails>,
-      },
+        loader: ({ params }) => fetch(`http://localhost:5000/pets/${params.id}`)
+      },   
       {
         path: '/donation',
         element: <DonationCamp></DonationCamp>,

@@ -7,11 +7,12 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAuth from "@/hooks/useAuth";
+import useAxiosPublic from "@/hooks/useAxiosPublic";
 
 const Register = () => {
 
     const { createUser, updateUserProfile } = useAuth();
-
+    const axiosPublic = useAxiosPublic();
     const [registerError, setRegisterError] = useState('');
     const [success, setSuccess] = useState('');
     const [showPass, setShowPass] = useState(false);
@@ -49,13 +50,20 @@ const Register = () => {
             .then(() => {
                 updateUserProfile(fullname, imageURL)
                     .then(() => {
-                        toast.success('User created successfully!!!')
-                        setTimeout(() => {
-                            navigate(from);
-                        }, 1000);
-
+                        const userInfo = {
+                            name: fullname,
+                            email: email,
+                            role: 'user'
+                        }
+                        axiosPublic.post('/User', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId)
+                                toast.success('User created successfully!!!')
+                                setTimeout(() => {
+                                    navigate(from);
+                                }, 1000);
+                            })
                     })
-
             })
             .catch((error) => {
                 console.error(error);

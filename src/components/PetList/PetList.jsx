@@ -4,7 +4,7 @@ import { useLoaderData } from 'react-router-dom';
 
 const PetList = () => {
 
-    // const pets = useLoaderData();
+    const pets = useLoaderData();
 
     
     return (

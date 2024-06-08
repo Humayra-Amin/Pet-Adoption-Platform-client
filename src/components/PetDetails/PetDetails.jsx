@@ -16,8 +16,7 @@ const PetDetails = () => {
     });
 
     useEffect(() => {
-        // Fetch pet details from the JSON file
-        // fetch('http://localhost:5000/pets')
+        fetch('http://localhost:5000/pets')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Network response was not ok: ${response.statusText}`);
@@ -25,7 +24,6 @@ const PetDetails = () => {
                 return response.json();
             })
             .then(data => {
-                // Find pet by id from the fetched data
                 const pet = data.find(pet => pet._id === id)
                 if (!pet) {
                     throw new Error(`Pet with ID ${id} not found`);

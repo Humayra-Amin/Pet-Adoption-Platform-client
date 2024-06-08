@@ -60,7 +60,7 @@ const AddPet = () => {
         }
 
         const currentDate = new Date(); 
-        const formattedDate = currentDate.toLocaleString(); // Using local time instead of UTC
+        const formattedDate = currentDate.toLocaleString(); 
         const newPet = {
             petImage,
             petName,

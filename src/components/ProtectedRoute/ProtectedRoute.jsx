@@ -1,9 +1,23 @@
 import useAuth from "@/hooks/useAuth";
+import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import Spinner from "../Spinner/Spinner";
 
 
 const ProtectedRoute = ({ children }) => {
-    const { user } = useAuth();
+    const { user, loading } = useAuth();
+    const [spinLoading, setSpinLoading] = useState(true);
+
+    useEffect(() => {
+        if (!spinLoading) {
+            setSpinLoading(false)
+        }
+    }, [spinLoading])
+
+
+    if (loading) {
+        return <Spinner></Spinner>
+    }
 
 
     if (!user) {

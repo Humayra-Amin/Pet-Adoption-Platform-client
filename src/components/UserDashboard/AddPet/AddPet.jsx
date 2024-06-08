@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Helmet } from "react-helmet-async";
 import Swal from 'sweetalert2';
 import useAuth from "@/hooks/useAuth";
@@ -20,6 +20,8 @@ const AddPet = () => {
     const [petLocation, setPetLocation] = useState('');
     const [shortDescription, setShortDescription] = useState('');
     const [longDescription, setLongDescription] = useState('');
+    const [adopted, setAdopted] = useState(false);
+    const [petId, setPetId] = useState(null);
 
     const axiosPublic = useAxiosPublic();
 
@@ -57,6 +59,8 @@ const AddPet = () => {
             return;
         }
 
+        const currentDate = new Date(); 
+        const formattedDate = currentDate.toLocaleString(); // Using local time instead of UTC
         const newPet = {
             petImage,
             petName,
@@ -65,12 +69,15 @@ const AddPet = () => {
             petLocation,
             shortDescription,
             longDescription,
-            userEmail: user?.email
+            userEmail: user?.email,
+            addedDate: formattedDate,
+            adopted: adopted 
         };
 
         try {
             const response = await axios.post('http://localhost:5000/pets', newPet);
             if (response.data.insertedId) {
+                setPetId(response.data.insertedId);
                 Swal.fire({
                     title: 'Success',
                     text: `Pet added successfully`,
@@ -84,6 +91,7 @@ const AddPet = () => {
                 setPetLocation('');
                 setShortDescription('');
                 setLongDescription('');
+                setAdopted(false);
             }
         } catch (error) {
             Swal.fire({
@@ -95,6 +103,21 @@ const AddPet = () => {
             console.error('Error:', error);
         }
     };
+
+    useEffect(() => {
+        if (petId !== null) {
+            const updateAdoptedStatus = async () => {
+                try {
+                    await axios.put(`http://localhost:5000/pets/${petId}`, { adopted });
+                    console.log('Adopted status updated successfully');
+                } catch (error) {
+                    console.error('Error updating adopted status:', error);
+                }
+            };
+
+            updateAdoptedStatus();
+        }
+    }, [adopted, petId]);
 
     const petCategories = [
         { value: 'all', label: 'All' },

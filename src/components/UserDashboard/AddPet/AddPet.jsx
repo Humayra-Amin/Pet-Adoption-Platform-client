@@ -21,21 +21,21 @@ const AddPet = () => {
     const [shortDescription, setShortDescription] = useState('');
     const [longDescription, setLongDescription] = useState('');
 
-    // const axiosPublic = useAxiosPublic();
+    const axiosPublic = useAxiosPublic();
 
-    // const handleImageChange = async (event) => {
-    //     const imageFile = event.target.files[0];
-    //     const formData = new FormData();
-    //     formData.append('image', imageFile);
+    const handleImageChange = async (event) => {
+        const imageFile = event.target.files[0];
+        const formData = new FormData();
+        formData.append('image', imageFile);
     
-    //     try {
-    //         const res = await axiosPublic.post(image_hosting_api, formData);
-    //         console.log(res);
-    //         setPetImage(res.data.data.display_url);
-    //     } catch (error) {
-    //         console.error('Error:', error);
-    //     }
-    // };
+        try {
+            const res = await axiosPublic.post(image_hosting_api, formData);
+            console.log(res);
+            setPetImage(res.data.data.display_url);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
 
     const handleAddPet = async (event) => {
         event.preventDefault();

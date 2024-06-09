@@ -20,6 +20,7 @@ import DonationCamp from './components/DonationCamp/DonationCamp';
 import DonationDetails from './components/DonationDetails/DonationDetails';
 import Dashboard from './components/UserDashboard/Dashboard/Dashboard';
 import AddPet from './components/UserDashboard/AddPet/AddPet';
+// import UpdatePet from './components/UserDashboard/UpdatePet/UpdatePet';
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,11 @@ const router = createBrowserRouter([
         path: '/dashboard/add-pet',
         element: <AddPet></AddPet>,
       },
+      // {
+      //   path: '/dashboard/update-pet/:id',
+      //   element: <UpdatePet></UpdatePet>,
+      //   loader: ({ params }) => fetch(`http://localhost:5000/pets/${params.id}`)
+      // },
     ]
   },
 ]);

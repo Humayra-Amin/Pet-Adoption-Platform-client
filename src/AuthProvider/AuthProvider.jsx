@@ -2,16 +2,18 @@ import { createContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, GithubAuthProvider, signOut, updateProfile } from "firebase/auth";
 import auth from "@/firebase/firebase.config";
 import Spinner from "@/components/Spinner/Spinner";
+import useAxiosPublic from "@/hooks/useAxiosPublic";
 
 
 export const AuthContext = createContext(null)
-
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+
+    const axiosPublic = useAxiosPublic();
 
     // create user
     const createUser = (email, password) => {
@@ -60,7 +62,21 @@ const AuthProvider = ({ children }) => {
             if (user) {
                 setUser(user);
             }
-            clearTimeout(timer);
+            if (user) {
+                // get token
+                const userInfo = { email: user.email };
+                axiosPublic.post('/jwt', userInfo)
+                    .then(res => {
+                        if (res.data.token) {
+                            localStorage.setItem('access-token', res.data.token);
+                        }
+                    })
+            }
+            else {
+                // TODO: Remove Token
+                localStorage.removeItem('access-token');
+            }
+            // clearTimeout(timer);
             setLoading(false);
         })
         return () => {

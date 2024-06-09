@@ -6,24 +6,44 @@ import Select from 'react-select';
 import useAxiosPublic from '@/hooks/useAxiosPublic';
 import axios from 'axios';
 import Dashboard from '../Dashboard/Dashboard';
+import { useParams } from 'react-router-dom';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-const AddPet = () => {
+const UpdatePet = () => {
     const { user } = useAuth();
-
+    const { id } = useParams();
     const [petImage, setPetImage] = useState(null);
     const [petName, setPetName] = useState('');
     const [petAge, setPetAge] = useState('');
-    const [petCategory, setPetCategory] = useState('');
+    const [petCategory, setPetCategory] = useState(null); 
     const [petLocation, setPetLocation] = useState('');
     const [shortDescription, setShortDescription] = useState('');
     const [longDescription, setLongDescription] = useState('');
     const [adopted, setAdopted] = useState(false);
-    const [petId, setPetId] = useState(null);
 
     const axiosPublic = useAxiosPublic();
+
+    useEffect(() => {
+        const fetchPetData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/pets/${id}`);
+                const pet = response.data;
+                setPetImage(pet.petImage);
+                setPetName(pet.petName);
+                setPetAge(pet.petAge);
+                setPetCategory({ value: pet.petCategory, label: pet.petCategory }); // Adjusted how petCategory is set
+                setPetLocation(pet.petLocation);
+                setShortDescription(pet.shortDescription);
+                setLongDescription(pet.longDescription);
+                setAdopted(pet.adopted);
+            } catch (error) {
+                console.error('Error fetching pet data:', error);
+            }
+        };
+        fetchPetData();
+    }, [id]);
 
     const handleImageChange = async (event) => {
         const imageFile = event.target.files[0];
@@ -32,14 +52,13 @@ const AddPet = () => {
     
         try {
             const res = await axiosPublic.post(image_hosting_api, formData);
-            console.log(res);
             setPetImage(res.data.data.display_url);
         } catch (error) {
             console.error('Error:', error);
         }
     };
 
-    const handleAddPet = async (event) => {
+    const handleUpdatePet = async (event) => {
         event.preventDefault();
 
         if (
@@ -59,44 +78,30 @@ const AddPet = () => {
             return;
         }
 
-        const currentDate = new Date(); 
-        const formattedDate = currentDate.toLocaleString(); 
-        const newPet = {
+        const updatedPet = {
             petImage,
             petName,
             petAge,
-            petCategory: petCategory.value,
+            petCategory: petCategory.value, // Adjusted how petCategory is accessed
             petLocation,
             shortDescription,
             longDescription,
             userEmail: user?.email,
-            addedDate: formattedDate,
-            adopted: adopted 
+            adopted
         };
 
         try {
-            const response = await axios.post('http://localhost:5000/pets', newPet);
-            if (response.data.insertedId) {
-                setPetId(response.data.insertedId);
-                Swal.fire({
-                    title: 'Success',
-                    text: `${petName} added successfully`,
-                    icon: 'success',
-                    confirmButtonText: 'Cool'
-                });
-                setPetImage(null);
-                setPetName('');
-                setPetAge('');
-                setPetCategory('');
-                setPetLocation('');
-                setShortDescription('');
-                setLongDescription('');
-                setAdopted(false);
-            }
+            await axios.put(`http://localhost:5000/pets/${id}`, updatedPet);
+            Swal.fire({
+                title: 'Success',
+                text: `Pet updated successfully`,
+                icon: 'success',
+                confirmButtonText: 'Cool'
+            });
         } catch (error) {
             Swal.fire({
                 title: 'Error',
-                text: 'An error occurred while adding pet',
+                text: 'An error occurred while updating the pet',
                 icon: 'error',
                 confirmButtonText: 'OK'
             });
@@ -104,47 +109,28 @@ const AddPet = () => {
         }
     };
 
-    useEffect(() => {
-        if (petId !== null) {
-            const updateAdoptedStatus = async () => {
-                try {
-                    await axios.put(`http://localhost:5000/pets/${petId}`, { adopted });
-                    console.log('Adopted status updated successfully');
-                } catch (error) {
-                    console.error('Error updating adopted status:', error);
-                }
-            };
-
-            updateAdoptedStatus();
-        }
-    }, [adopted, petId]);
-
     const petCategories = [
+        { value: 'all', label: 'All' },
         { value: 'dog', label: 'Dog' },
         { value: 'cat', label: 'Cat' },
         { value: 'bird', label: 'Bird' },
-        { value: 'kitten', label: 'Kitten' },
-        { value: 'rabbit', label: 'Rabbit' },
     ];
 
     return (
         <div>
             <Helmet>
-                <title>PawPet | Add Pet</title>
+                <title>PawPet | Update Pet</title>
             </Helmet>
             <div className="flex">
                 <Dashboard />
                 <div className="hero min-h-screen">
                     <div className="hero-content flex-col lg:flex-row-reverse">
                         <div className="card shrink-0 lg:w-[700px] bg-base-100">
-
-                            <form onSubmit={handleAddPet} encType="multipart/form-data" className="card-body border-2 border-green-600 p-14 shadow-2xl rounded-xl">
-
-                            <div className="text-center">
-                                <h1 className="text-4xl md:text-3xl lg:text-5xl font-bold playfair text-green-600">Add Pets</h1>
-                                <p className="py-6 robotoSlab md:text-xl lg:text-2xl text-green-400">Welcome! To add your pet to our community, please fill out the form</p>
-                            </div>
-
+                            <form onSubmit={handleUpdatePet} encType="multipart/form-data" className="card-body border-2 border-green-600 p-14 shadow-2xl rounded-xl">
+                                <div className="text-center">
+                                    <h1 className="text-4xl md:text-3xl lg:text-5xl font-bold playfair text-green-600">Update Pet</h1>
+                                    <p className="py-6 robotoSlab md:text-xl lg:text-2xl text-green-400">Update your pets information, please fill out the form</p>
+                                </div>
                                 <div className="form-control">
                                     <div className="md:flex mb-8 gap-5">
                                         <div className="form-control md:w-1/2">
@@ -165,7 +151,6 @@ const AddPet = () => {
                                         </div>
                                     </div>
                                 </div>
-
                                 <div className="form-control">
                                     <div className="md:flex mb-8 gap-5">
                                         <div className="form-control md:w-1/2">
@@ -189,7 +174,6 @@ const AddPet = () => {
                                         </div>
                                     </div>
                                 </div>
-
                                 <div className="form-control">
                                     <div className="md:flex mb-8 gap-5">
                                         <div className="form-control md:w-1/2">
@@ -200,7 +184,6 @@ const AddPet = () => {
                                         </div>
                                     </div>
                                 </div>
-
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Short Description</span>
@@ -218,7 +201,7 @@ const AddPet = () => {
                                     </label>
                                 </div>
                                 <div className="form-control mt-6">
-                                    <button type="submit" className="btn bg-green-400 border-green-800 text-white text-xl hover:bg-white hover:text-black hover:border-green-700">Add</button>
+                                    <button type="submit" className="btn bg-green-400 border-green-800 text-white text-xl hover:bg-white hover:text-black hover:border-green-700">Update</button>
                                 </div>
                             </form>
                         </div>
@@ -229,4 +212,4 @@ const AddPet = () => {
     );
 };
 
-export default AddPet;
+export default UpdatePet;

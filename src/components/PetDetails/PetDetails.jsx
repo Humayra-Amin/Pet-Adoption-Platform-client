@@ -73,8 +73,8 @@ const PetDetails = () => {
             </div>
 
             <div className="container mx-auto my-10 flex justify-center">
-                <div className="flex flex-col items-center bg-white border-2 border-green-700 rounded-lg shadow-lg lg:w-[750px] lg:h-auto md:flex-row md:max-w-xl">
-                    <img className="object-cover w-full rounded-t-lg h-80 md:h-[300px] lg:h-[400px] md:w-[300px] lg:w-[300px] md:rounded-none md:rounded-s-lg" src={pet.petImage} alt={pet.petName} />
+                <div className="flex flex-col md:flex-col items-center bg-white border-2 border-green-700 rounded-lg shadow-lg lg:w-[750px] lg:h-auto md:max-w-xl">
+                    <img className="object-cover w-full rounded-t-lg h-80 md:h-[300px] lg:h-[400px] md:max-w-xl lg:max-w-xl" src={pet.petImage} alt={pet.petName} />
                     <div className="flex flex-col justify-between p-4 leading-normal">
                         <h5 className="mb-2 text-2xl font-bold tracking-tight text-black playfair">{pet.petName}</h5>
                         <p className="mb-3 text-[18px] font-semibold text-black">Pet Age: <span className="text-gray-600 robotoSlab font-normal">{pet.petAge}</span></p>

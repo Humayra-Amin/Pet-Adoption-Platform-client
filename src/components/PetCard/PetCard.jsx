@@ -7,7 +7,7 @@ const PetCard = ({ pet }) => {
         <div>
             <div className="bg-white border-2 border-green-700 rounded-lg shadow-lg dark:bg-black-800 dark:border-black-700">
                 <div>
-                    <img className="rounded-t-lg w-[450px] h-[300px]" src={petImage} alt={petName} />
+                    <img className="rounded-t-lg w-[450px] h-[300px]" src={petImage} />
                 </div>
                 <div className="p-5">
                     <h5 className="mb-2 text-2xl lg:text-4xl font-bold tracking-tight text-black-900 dark:text-white playfair">{petName}</h5>

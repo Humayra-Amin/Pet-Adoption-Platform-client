@@ -20,6 +20,8 @@ import DonationCamp from './components/DonationCamp/DonationCamp';
 import DonationDetails from './components/DonationDetails/DonationDetails';
 import Dashboard from './components/UserDashboard/Dashboard/Dashboard';
 import AddPet from './components/UserDashboard/AddPet/AddPet';
+import Payment from './components/Payment/Payment';
+import CreateDonationCamp from './components/UserDashboard/CreateDonationCamp/CreateDonationCamp';
 // import UpdatePet from './components/UserDashboard/UpdatePet/UpdatePet';
 
 const router = createBrowserRouter([
@@ -52,14 +54,14 @@ const router = createBrowserRouter([
       {
         path: '/pets/:id',
         element: <PetDetails></PetDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/pets/${params.id}`)
-      },   
+      },
       {
         path: '/donation',
         element: <DonationCamp></DonationCamp>,
+        loader: () => fetch('http://localhost:5000/donations')
       },
       {
-        path: '/donationDetails',
+        path: '/donations/:id',
         element: <DonationDetails></DonationDetails>,
       },
       {
@@ -69,6 +71,14 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/add-pet',
         element: <AddPet></AddPet>,
+      },
+      {
+        path: '/dashboard/create-donation-campaign',
+        element: <CreateDonationCamp></CreateDonationCamp>,
+      },
+      {
+        path: '/payment',
+        element: <Payment></Payment>,
       },
       // {
       //   path: '/dashboard/update-pet/:id',
@@ -83,7 +93,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <HelmetProvider>
       <AuthProvider>
-      <RouterProvider router={router} />
+        <RouterProvider router={router} />
       </AuthProvider>
     </HelmetProvider>
   </React.StrictMode>

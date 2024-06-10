@@ -1,3 +1,35 @@
+## Pet Adoption Platform(PawPets)
+
+This project is a web application for managing pet adoption and donation campaigns. It includes user authentication, pet management, donation campaigns, user dashboard and an admin dashboard.
+
+## Features
+
+- User and Admin dashboards with protected routes.
+- Email and password authentication with error handling.
+- Registration with profile image upload.
+- Google and Github authentication.
+- JWT-based session management.
+- Infinite scrolling for pet listings.
+- CRUD operations for pets and donation campaigns.
+- Admin controls for user management, pet management, and donation campaign management.
+
+## Tech Stack
+
+- **Frontend**: React, React Router, Tanstack Query, Shadcn-UI, Flowbite
+- **Backend**: Firebase Authentication, Mongodb, imgbb API for image uploads
+- **Payment**: Stripe for donation payments
+
+## Prerequisites
+
+- Node.js and npm installed
+- Firebase project set up
+- imgbb account set up
+- Stripe account set up
+
+## Live URL
+
+- https://pet-adoption-a621f.web.app/
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

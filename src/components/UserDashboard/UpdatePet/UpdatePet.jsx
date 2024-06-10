@@ -28,7 +28,7 @@ const UpdatePet = () => {
     useEffect(() => {
         const fetchPetData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/pets/${id}`);
+                const response = await axios.get(`https://pet-adoption-server-amber.vercel.app/pets/${id}`);
                 const pet = response.data;
                 setPetImage(pet.petImage);
                 setPetName(pet.petName);
@@ -91,7 +91,7 @@ const UpdatePet = () => {
         };
 
         try {
-            await axios.put(`http://localhost:5000/pets/${id}`, updatedPet);
+            await axios.put(`https://pet-adoption-server-amber.vercel.app/pets/${id}`, updatedPet);
             Swal.fire({
                 title: 'Success',
                 text: `Pet updated successfully`,

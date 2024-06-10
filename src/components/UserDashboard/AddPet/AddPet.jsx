@@ -75,7 +75,7 @@ const AddPet = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:5000/pets', newPet);
+            const response = await axios.post('https://pet-adoption-server-amber.vercel.app/pets', newPet);
             if (response.data.insertedId) {
                 setPetId(response.data.insertedId);
                 Swal.fire({
@@ -108,7 +108,7 @@ const AddPet = () => {
         if (petId !== null) {
             const updateAdoptedStatus = async () => {
                 try {
-                    await axios.put(`http://localhost:5000/pets/${petId}`, { adopted });
+                    await axios.put(`https://pet-adoption-server-amber.vercel.app/pets/${petId}`, { adopted });
                     console.log('Adopted status updated successfully');
                 } catch (error) {
                     console.error('Error updating adopted status:', error);

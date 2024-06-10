@@ -18,11 +18,20 @@ import PetList from './components/PetList/PetList';
 import PetDetails from './components/PetDetails/PetDetails';
 import DonationCamp from './components/DonationCamp/DonationCamp';
 import DonationDetails from './components/DonationDetails/DonationDetails';
-import Dashboard from './components/UserDashboard/Dashboard/Dashboard';
-import AddPet from './components/UserDashboard/AddPet/AddPet';
 import Payment from './components/Payment/Payment';
-import CreateDonationCamp from './components/UserDashboard/CreateDonationCamp/CreateDonationCamp';
-// import UpdatePet from './components/UserDashboard/UpdatePet/UpdatePet';
+import Dashboard from './Layout/Dashboard';
+import UserHome from './components/Dashboard/UserHome/UserHome';
+import AddPet from './components/Dashboard/AddPet/AddPet';
+import MyAddedPets from './components/Dashboard/MyAddedPets/MyAddedPets';
+import UpdatePets from './components/Dashboard/MyAddedPets/UpdatePets';
+import UserTableMyAddedPets from './components/Dashboard/MyAddedPets/UserTableMyAddedPets';
+import EditDonationCamp from './components/Dashboard/MyDonationCamp/EditDonationCamp';
+import AdoptionRequest from './components/Dashboard/AdoptionRequest/AdoptionRequest';
+import CreateDonationCampaign from './components/Dashboard/CreateDonationCampaign/CreateDonationCampaign';
+import MyDonationCamp from './components/Dashboard/MyDonationCamp/MyDonationCamp';
+import Users from './components/Dashboard/Users/Users';
+import AllPets from './components/Dashboard/AllPets/AllPets';
+import AllDonations from './components/Dashboard/AllDonations/AllDonations';
 
 const router = createBrowserRouter([
   {
@@ -47,9 +56,13 @@ const router = createBrowserRouter([
         element: <UserProfile></UserProfile>,
       },
       {
+        path: '/payment',
+        element: <Payment></Payment>,
+      },
+      {
         path: '/petList',
         element: <PetList></PetList>,
-        loader: () => fetch('http://localhost:5000/pets')
+        loader: () => fetch('https://pet-adoption-server-amber.vercel.app/pets')
       },
       {
         path: '/pets/:id',
@@ -58,35 +71,72 @@ const router = createBrowserRouter([
       {
         path: '/donation',
         element: <DonationCamp></DonationCamp>,
-        loader: () => fetch('http://localhost:5000/donations')
+        loader: () => fetch('https://pet-adoption-server-amber.vercel.app/donations')
       },
       {
         path: '/donations/:id',
         element: <DonationDetails></DonationDetails>,
       },
+    ]
+  },
+  {
+    path: 'dashboard',
+    element: <Dashboard></Dashboard>,
+    children: [
       {
-        path: '/dashboard',
-        element: <Dashboard></Dashboard>,
-      },
-      {
-        path: '/dashboard/add-pet',
+        path: 'addPet',
         element: <AddPet></AddPet>,
       },
       {
-        path: '/dashboard/create-donation-campaign',
-        element: <CreateDonationCamp></CreateDonationCamp>,
+        path: 'myAddedPet',
+        element: <MyAddedPets></MyAddedPets>,
       },
       {
-        path: '/payment',
-        element: <Payment></Payment>,
+        path: 'updatePet/:id',
+        element: <UpdatePets></UpdatePets>,
+        loader: ({ params }) => fetch(`http://localhost:5000/petDetails/${params.id}`)
       },
-      // {
-      //   path: '/dashboard/update-pet/:id',
-      //   element: <UpdatePet></UpdatePet>,
-      //   loader: ({ params }) => fetch(`http://localhost:5000/pets/${params.id}`)
-      // },
+      {
+        path: 'userTableMyAddedPets',
+        element: <UserTableMyAddedPets></UserTableMyAddedPets>,
+      },
+      {
+        path: 'editDonationCamp/:id',
+        element: <EditDonationCamp></EditDonationCamp>,
+        loader: ({ params }) => fetch(`http://localhost:5000/donationCampaignDetailsById/${params.id}`)
+      },
+      {
+        path: 'adoptionRequest',
+        element: <AdoptionRequest></AdoptionRequest>,
+      },
+      {
+        path: 'createDonationCamp',
+        element: <CreateDonationCampaign></CreateDonationCampaign>,
+      },
+      {
+        path: 'myDonationCamp',
+        element: <MyDonationCamp></MyDonationCamp>,
+      },
+      // admin dashboard
+      {
+        path: 'user',
+        element: <Users></Users>,
+      },
+      {
+        path: 'allPets',
+        element: <AllPets></AllPets>,
+      },
+      {
+        path: 'allDonations',
+        element: <AllDonations></AllDonations>,
+      },
+      {
+        path: '/userHome',
+        element: <UserHome></UserHome>,
+      },
     ]
   },
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

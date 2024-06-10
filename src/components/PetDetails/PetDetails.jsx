@@ -16,7 +16,7 @@ const PetDetails = () => {
     });
 
     useEffect(() => {
-        fetch('http://localhost:5000/pets')
+        fetch('https://pet-adoption-server-amber.vercel.app/pets')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Network response was not ok: ${response.statusText}`);

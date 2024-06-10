@@ -57,7 +57,7 @@ const CreateDonationCamp = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:5000/donations', newDonationCampaign);
+            const response = await axios.post('https://pet-adoption-server-amber.vercel.app/donations', newDonationCampaign);
             if (response.data.insertedId) {
                 Swal.fire({
                     title: 'Success',

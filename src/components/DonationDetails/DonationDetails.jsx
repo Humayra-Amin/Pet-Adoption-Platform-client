@@ -11,7 +11,7 @@ const DonationDetails = () => {
     });
 
     useEffect(() => {
-        fetch('https://pet-adoption-server-amber.vercel.app/donations')
+        fetch('http://localhost:5000/donations')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Network response was not ok: ${response.statusText}`);
@@ -92,7 +92,7 @@ const DonationDetails = () => {
                                 />
                             </div>
                             <div className="mt-6 flex justify-end">
-                                <Link to='/payment'>                                <button className="btn bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800" type="submit" onClick={handleCloseModal}>
+                                <Link to='/payment'><button className="btn bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800" type="submit" onClick={handleCloseModal}>
                                     Pay
                                 </button></Link>
                             </div>

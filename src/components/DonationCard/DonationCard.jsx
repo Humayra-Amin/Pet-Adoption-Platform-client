@@ -12,7 +12,7 @@ const DonationCard = ({ donation }) => {
                 <p className="mb-3 font-semibold text-black lg:text-xl">Donated Amount: <span className="text-gray-600 font-normal">{donationAmount}</span></p>
                 <Link to={`/donations/${_id}`}>
                     <button className="btn inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800">
-                        Adopt
+                        Pay
                     </button>
                 </Link>
             </div>

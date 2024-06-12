@@ -1,11 +1,13 @@
-import React from 'react';
+import UserTableMyDonationCamp from './UserTableMyDonationCamp';
 
-const MyDonationCamp = () => {
+const MyDonationCam = () => {
     return (
         <div>
-            
+            <div className='playfair' style={{ paddingTop: '80px' }}>
+                <UserTableMyDonationCamp></UserTableMyDonationCamp>
+            </div>
         </div>
     );
 };
 
-export default MyDonationCamp;
+export default MyDonationCam;

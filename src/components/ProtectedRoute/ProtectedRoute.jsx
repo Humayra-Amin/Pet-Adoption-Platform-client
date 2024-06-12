@@ -21,7 +21,7 @@ const ProtectedRoute = ({ children }) => {
 
 
     if (!user) {
-        return <Navigate to='/logReg' state={location?.pathname || '/'}></Navigate>
+        return <Navigate to='/login' state={location?.pathname || '/'}></Navigate>
     }
 
     return (

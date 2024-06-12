@@ -12,6 +12,7 @@ const githubProvider = new GithubAuthProvider();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [role, setRole] = useState(null);
 
     const axiosPublic = useAxiosPublic();
 
@@ -51,6 +52,7 @@ const AuthProvider = ({ children }) => {
     const logout = () => {
         setUser(null);
         signOut(auth);
+        setRole(null);
     }
 
     useEffect(() => {
@@ -94,7 +96,8 @@ const AuthProvider = ({ children }) => {
         githubLogin,
         logout,
         loading,
-        updateUserProfile
+        updateUserProfile,
+        role,
     }
 
     return (

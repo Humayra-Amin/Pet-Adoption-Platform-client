@@ -1,75 +1,118 @@
+import { useState } from 'react';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import { FaBars, FaDonate, FaHome, FaPlus, FaPlusSquare, FaReplyAll, FaUser } from 'react-icons/fa';
+import { MdOutlinePets } from 'react-icons/md';
+import { RiMoneyDollarCircleFill } from 'react-icons/ri';
 import Navbar from '@/components/Navbar/Navbar';
+import Footer from '@/components/Footer/Footer';
 import useAuth from '@/hooks/useAuth';
-import React from 'react';
-import { FaDonate, FaHome, FaPlus, FaPlusSquare, FaReplyAll, FaUser } from 'react-icons/fa';
-import { NavLink, Outlet } from 'react-router-dom';
+import classNames from 'classnames';
 
 const Dashboard = () => {
     const { role } = useAuth();
+    const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
 
+    const toggleSidebar = () => {
+        setIsOpen(!isOpen);
+    };
 
     return (
-        <div>
+        <div className="flex flex-col min-h-screen">
             <Navbar></Navbar>
-            <div className='flex' style={{ paddingTop: '80px' }}>
-                <div className="w-80 min-h-screen bg-slate-700">
-                    <ul className="menu p-4 uppercase text-white">
+
+            <button onClick={toggleSidebar} className="lg:hidden p-2 text-white bg-green-600">
+                <FaBars size={24} />
+            </button>
+
+            <div className="flex flex-1">
+                <aside
+                    className={classNames(
+                        'lg:block w-80 bg-green-600 text-white min-h-full transition-transform duration-300',
                         {
-                            role == 'admin' ? <>
+                            'block': isOpen,
+                            'hidden lg:block': !isOpen,
+                        }
+                    )}
+                >
+                    <div className="p-4">
+                        <h1 className="border-2 bg-green-200 text-black border-green-200 text-center text-xl playfair font-semibold p-1 mt-16 rounded-lg shadow-lg">
+                            Dashboard
+                        </h1>
+                        <ul className="menu p-4 uppercase text-white gap-5 font-semibold robotoSlab">
+                            {role === 'admin' && (
+                                <>
+                                    <li>
+                                        <NavLink
+                                            to="/dashboard/AdminHome"
+                                            className={classNames('flex items-center gap-2', {
+                                                'text-white bg-green-800': location.pathname === '/dashboard/AdminHome',
+                                                'text-gray-300': location.pathname !== '/dashboard/AdminHome'
+                                            })}
+                                        >
+                                            <FaHome />
+                                            Admin Home
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            to="/dashboard/Users"
+                                            className={classNames('flex items-center gap-2', {
+                                                'text-white bg-green-800': location.pathname === '/dashboard/Users',
+                                                'text-gray-300': location.pathname !== '/dashboard/Users'
+                                            })}
+                                        >
+                                            <FaUser />
+                                            Users
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            to="/dashboard/allPets"
+                                            className={classNames('flex items-center gap-2', {
+                                                'text-white bg-green-800': location.pathname === '/dashboard/allPets',
+                                                'text-gray-300': location.pathname !== '/dashboard/allPets'
+                                            })}
+                                        >
+                                            <FaReplyAll />
+                                            All Pets
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            to="/dashboard/allDonations"
+                                            className={classNames('flex items-center gap-2', {
+                                                'text-white bg-green-800': location.pathname === '/dashboard/allDonations',
+                                                'text-gray-300': location.pathname !== '/dashboard/allDonations'
+                                            })}
+                                        >
+                                            <FaDonate />
+                                            All Donations
+                                        </NavLink>
+                                    </li>
+                                </>
+                            )}
+                            {role === 'user' && (
                                 <li>
                                     <NavLink
-                                        to="/Dashboard/AdminHome"
-                                        className={({ isActive }) => isActive ? 'text-white flex items-center gap-2' : 'text-gray-300 flex items-center gap-2'}
-                                    >
-                                        <FaHome />
-                                        Admin Home
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink
-                                        to="/Dashboard/Users"
-                                        className={({ isActive }) => isActive ? 'text-white flex items-center gap-2' : 'text-gray-300 flex items-center gap-2'}
-                                    >
-                                        <FaUser />
-                                        Users
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink
-                                        to="/Dashboard/AllPets"
-                                        className={({ isActive }) => isActive ? 'text-white flex items-center gap-2' : 'text-gray-300 flex items-center gap-2'}
-                                    >
-                                        <FaReplyAll />
-                                        All Pets
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink
-                                        to="/Dashboard/AllDonations"
-                                        className={({ isActive }) => isActive ? 'text-white flex items-center gap-2' : 'text-gray-300 flex items-center gap-2'}
-                                    >
-                                        <FaDonate />
-                                        All Donations
-                                    </NavLink>
-                                </li>
-                            </>
-                                : null}
-                        <>
-                            <>
-                                {role == "user" ? (<li>
-                                    <NavLink
-                                        to="/Dashboard/UserHome"
-                                        className={({ isActive }) => isActive ? 'text-white flex items-center gap-2' : 'text-gray-300 flex items-center gap-2'}
+                                        to="/dashboard/userHome"
+                                        className={classNames('flex items-center gap-2', {
+                                            'text-white bg-green-800': location.pathname === '/dashboard/userHome',
+                                            'text-gray-300': location.pathname !== '/dashboard/userHome'
+                                        })}
                                     >
                                         <FaHome />
                                         User Home
                                     </NavLink>
-                                </li>) : null}
-                            </>
+                                </li>
+                            )}
                             <li>
                                 <NavLink
-                                    to="/Dashboard/UserHome"
-                                    className={({ isActive }) => isActive ? 'text-white flex items-center gap-2' : 'text-gray-300 flex items-center gap-2'}
+                                    to="/dashboard/userHome"
+                                    className={classNames('flex items-center gap-2', {
+                                        'text-white bg-green-800': location.pathname === '/dashboard/userHome',
+                                        'text-gray-300': location.pathname !== '/dashboard/userHome'
+                                    })}
                                 >
                                     <FaPlusSquare />
                                     User Home
@@ -77,17 +120,23 @@ const Dashboard = () => {
                             </li>
                             <li>
                                 <NavLink
-                                    to="/Dashboard/AddPet"
-                                    className={({ isActive }) => isActive ? 'text-white flex items-center gap-2' : 'text-gray-300 flex items-center gap-2'}
+                                    to="/dashboard/addPet"
+                                    className={classNames('flex items-center gap-2', {
+                                        'text-white bg-green-500': location.pathname === '/dashboard/addPet',
+                                        'text-gray-300': location.pathname !== '/dashboard/addPet'
+                                    })}
                                 >
-                                    <FaPlusSquare />
+                                    <MdOutlinePets />
                                     Add a Pet
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink
-                                    to="/Dashboard/MyAddedPets"
-                                    className={({ isActive }) => isActive ? 'text-white flex items-center gap-2' : 'text-gray-300 flex items-center gap-2'}
+                                    to="/dashboard/myAddedPets"
+                                    className={classNames('flex items-center gap-2', {
+                                        'text-white bg-green-800': location.pathname === '/dashboard/myAddedPets',
+                                        'text-gray-300': location.pathname !== '/dashboard/myAddedPets'
+                                    })}
                                 >
                                     <FaPlus />
                                     My Added Pets
@@ -95,25 +144,34 @@ const Dashboard = () => {
                             </li>
                             <li>
                                 <NavLink
-                                    to="/Dashboard/AdoptionRequest"
-                                    className={({ isActive }) => isActive ? 'text-white flex items-center gap-2' : 'text-gray-300 flex items-center gap-2'}
+                                    to="/dashboard/adoptionRequest"
+                                    className={classNames('flex items-center gap-2', {
+                                        'text-white bg-green-800': location.pathname === '/dashboard/adoptionRequest',
+                                        'text-gray-300': location.pathname !== '/dashboard/adoptionRequest'
+                                    })}
                                 >
                                     Adoption Request
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink
-                                    to="/Dashboard/CreateDonationCampaign"
-                                    className={({ isActive }) => isActive ? 'text-white flex items-center gap-2' : 'text-gray-300 flex items-center gap-2'}
+                                    to="/dashboard/createDonationCampaign"
+                                    className={classNames('flex items-center gap-2', {
+                                        'text-white bg-green-800': location.pathname === '/dashboard/createDonationCampaign',
+                                        'text-gray-300': location.pathname !== '/dashboard/createDonationCampaign'
+                                    })}
                                 >
-                                    <FaDonate />
+                                    <RiMoneyDollarCircleFill />
                                     Create Donation Campaign
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink
-                                    to="/Dashboard/MyDonationCampaigns"
-                                    className={({ isActive }) => isActive ? 'text-white flex items-center gap-2' : 'text-gray-300 flex items-center gap-2'}
+                                    to="/dashboard/myDonationCamp"
+                                    className={classNames('flex items-center gap-2', {
+                                        'text-white bg-green-800': location.pathname === '/dashboard/myDonationCamp',
+                                        'text-gray-300': location.pathname !== '/dashboard/myDonationCamp'
+                                    })}
                                 >
                                     <FaDonate />
                                     My Donation Campaigns
@@ -121,21 +179,25 @@ const Dashboard = () => {
                             </li>
                             <li>
                                 <NavLink
-                                    to="/Dashboard/MyDonations"
-                                    className={({ isActive }) => isActive ? 'text-white flex items-center gap-2' : 'text-gray-300 flex items-center gap-2'}
+                                    to="/dashboard/MyDonations"
+                                    className={classNames('flex items-center gap-2', {
+                                        'text-white bg-green-800': location.pathname === '/dashboard/MyDonations',
+                                        'text-gray-300': location.pathname !== '/dashboard/MyDonations'
+                                    })}
                                 >
                                     <FaDonate />
                                     My Donations
                                 </NavLink>
                             </li>
-                        </>
+                        </ul>
+                    </div>
+                </aside>
 
-                    </ul>
-                </div>
-                <div className='flex-1'>
+                <main className="flex-1 p-4">
                     <Outlet></Outlet>
-                </div>
+                </main>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

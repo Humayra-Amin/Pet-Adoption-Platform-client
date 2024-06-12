@@ -1,4 +1,6 @@
 import bird from '../../assets/images/bird2.jpg'
+import cat from '../../assets/images/cat1.jpg'
+import dog from '../../assets/images/dog1.jpg'
 const PetsCategory = () => {
     return (
         <div>
@@ -9,12 +11,12 @@ const PetsCategory = () => {
             <div className='container mx-auto my-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-5'>
                 <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md">
                     <a href="#">
-                        <img className="rounded-t-lg" src={bird} alt="Noteworthy technology acquisitions 2021" />
+                        <img className="rounded-t-lg w-[450px] h-[300px]" src={bird} />
                     </a>
                     <div className="p-5">
                         <a>
                             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                                PET NAME
+                                BIRDS
                             </h5>
                         </a>
                     </div>
@@ -22,12 +24,12 @@ const PetsCategory = () => {
 
                 <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md">
                     <a href="#">
-                        <img className="rounded-t-lg" src={bird} alt="Noteworthy technology acquisitions 2021" />
+                        <img className="rounded-t-lg w-[450px] h-[300px]" src={cat} />
                     </a>
                     <div className="p-5">
                         <a>
                             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                                PET NAME
+                                CATS
                             </h5>
                         </a>
                     </div>
@@ -35,12 +37,12 @@ const PetsCategory = () => {
 
                 <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md">
                     <a href="#">
-                        <img className="rounded-t-lg w-[450px] h-[300px]" src={bird} alt="Noteworthy technology acquisitions 2021" />
+                        <img className="rounded-t-lg w-[450px] h-[300px]" src={dog}/>
                     </a>
                     <div className="p-5">
                         <a>
                             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                                PET NAME
+                                DOGS
                             </h5>
                         </a>
                     </div>

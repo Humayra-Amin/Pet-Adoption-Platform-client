@@ -32,6 +32,8 @@ import MyDonationCamp from './components/Dashboard/MyDonationCamp/MyDonationCamp
 import Users from './components/Dashboard/Users/Users';
 import AllPets from './components/Dashboard/AllPets/AllPets';
 import AllDonations from './components/Dashboard/AllDonations/AllDonations';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import MyDonations from './components/Dashboard/MyDonations/MyDonations';
 
 const router = createBrowserRouter([
   {
@@ -62,7 +64,7 @@ const router = createBrowserRouter([
       {
         path: '/petList',
         element: <PetList></PetList>,
-        loader: () => fetch('https://pet-adoption-server-amber.vercel.app/pets')
+        loader: () => fetch('http://localhost:5000/pets')
       },
       {
         path: '/pets/:id',
@@ -71,7 +73,7 @@ const router = createBrowserRouter([
       {
         path: '/donation',
         element: <DonationCamp></DonationCamp>,
-        loader: () => fetch('https://pet-adoption-server-amber.vercel.app/donations')
+        loader: () => fetch('http://localhost:5000/donations')
       },
       {
         path: '/donations/:id',
@@ -81,14 +83,16 @@ const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <Dashboard></Dashboard>,
+    element: <ProtectedRoute>
+      <Dashboard></Dashboard>
+    </ProtectedRoute>,
     children: [
       {
         path: 'addPet',
         element: <AddPet></AddPet>,
       },
       {
-        path: 'myAddedPet',
+        path: 'myAddedPets',
         element: <MyAddedPets></MyAddedPets>,
       },
       {
@@ -110,12 +114,16 @@ const router = createBrowserRouter([
         element: <AdoptionRequest></AdoptionRequest>,
       },
       {
-        path: 'createDonationCamp',
+        path: 'createDonationCampaign',
         element: <CreateDonationCampaign></CreateDonationCampaign>,
       },
       {
         path: 'myDonationCamp',
         element: <MyDonationCamp></MyDonationCamp>,
+      },
+      {
+        path: 'myDonations',
+        element: <MyDonations></MyDonations>,
       },
       // admin dashboard
       {
@@ -131,7 +139,7 @@ const router = createBrowserRouter([
         element: <AllDonations></AllDonations>,
       },
       {
-        path: '/userHome',
+        path: 'userHome',
         element: <UserHome></UserHome>,
       },
     ]

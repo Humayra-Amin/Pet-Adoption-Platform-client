@@ -6,7 +6,6 @@ This project is a web application for managing pet adoption and donation campaig
 
 - User and Admin dashboards with protected routes.
 - Email and password authentication with error handling.
-- Registration with profile image upload.
 - Google and Github authentication.
 - JWT-based session management.
 - Infinite scrolling for pet listings.

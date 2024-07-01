@@ -29,16 +29,7 @@ This project is a web application for managing pet adoption and donation campaig
 
 - https://pet-adoption-a621f.web.app/
 
-# Used Technologies:
-
-- React
-- Tailwind CSS
-- Firebase(Authentication and Hosting)
-- MongoDB
-- Nodejs
-- Expressjs
-
-# To clone this project follow the below steps: 
+## To clone this project follow the below steps: 
 
 - Go the repository that you want to clone
 - Copy the code URL from the green "Code" button. can copy either SSH if SSH key is set up or else copy HTTPS.
